@@ -1,0 +1,109 @@
+:root {
+  /* colors */
+  --color-primary: #1992d4;
+  --color-accent: #f0b429;
+  --color-bg: #e2e8f0;
+  --color-font-dark: #000000;
+  --color-font-light: #ffffff;
+
+  /* Fonts */
+  --ff-primary: "Roboto", sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-bold: 700;
+}
+
+/* Global */
+* {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Main Container */
+.main-container {
+  display: grid;
+  grid-template-columns: 20em 4fr;
+  font-family: var(--ff-primary);
+}
+
+/* Sidebar */
+.sidebar {
+  min-height: 100vh;
+  padding: 2em;
+  background-color: var(--color-primary);
+  color: var(--color-font-light);
+  font-weight: var(--fw-bold);
+}
+
+.logo {
+  display: grid;
+  gap: 0.5em;
+  margin-bottom: 2em;
+  grid-template-columns: minmax(70px, auto) 1fr;
+  align-items: center;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.main-links {
+  margin-bottom: 5em;
+}
+
+.main-links li,
+.secondary-links li {
+  display: grid;
+  gap: 0.6em;
+  margin-bottom: 1em;
+  grid-template-columns: minmax(70px, auto) 1fr;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.sb-img {
+  height: 40px;
+  transition: ease-out 0.3s;
+}
+
+.dashboard-img {
+  height: 70px;
+}
+
+/* Sidebar psuedo effects */
+.logo:hover,
+.main-links li:hover,
+.secondary-links li:hover {
+  text-decoration: underline;
+}
+.logo img:hover,
+.main-links img:hover,
+.secondary-links img:hover {
+  transform: scale(1.2);
+}
+
+/* Misc */
+img,
+svg {
+  width: 100%;
+}
+
+a {
+  all: unset;
+}
