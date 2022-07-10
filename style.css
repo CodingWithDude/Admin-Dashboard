@@ -11,6 +11,7 @@
 
   --fw-light: 300;
   --fw-regular: 400;
+  --fw-medium: 500;
   --fw-bold: 700;
 }
 
@@ -38,17 +39,24 @@ body {
 /* Main Container */
 .main-container {
   display: grid;
-  grid-template-columns: 20em 4fr;
+
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main-content";
+  grid-template-columns: 20em auto;
+  grid-template-rows: 1fr 4fr;
   font-family: var(--ff-primary);
 }
 
 /* Sidebar */
 .sidebar {
+  grid-area: sidebar;
   min-height: 100vh;
   padding: 2em;
   background-color: var(--color-primary);
   color: var(--color-font-light);
   font-weight: var(--fw-bold);
+  z-index: 1;
 }
 
 .logo {
@@ -96,6 +104,111 @@ body {
 .main-links img:hover,
 .secondary-links img:hover {
   transform: scale(1.2);
+}
+
+/* Header */
+
+.header {
+  grid-area: header;
+  display: grid;
+  align-items: center;
+  grid-template-areas:
+    "search user-nav"
+    "user-info header-buttons";
+  grid-template-columns: 2fr 1fr;
+  padding-left: 36px;
+  padding-top: 16px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.43);
+}
+
+.search {
+  grid-area: search;
+  display: grid;
+  align-content: center;
+  grid-template-columns: 70px 1fr;
+}
+
+.search img,
+.user-nav img {
+  height: 40px;
+}
+
+.search input {
+  border-radius: 50px;
+  border: 2px solid transparent;
+  background-color: var(--color-bg);
+  font-size: 1.5em;
+  text-indent: 0.5em;
+}
+
+.user-nav {
+  grid-area: user-nav;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: var(--fw-medium);
+}
+
+.user-info {
+  grid-area: user-info;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0.4em;
+  align-items: center;
+  font-size: 2em;
+  font-weight: var(--fw-medium);
+  line-height: 1.3em;
+}
+
+.user-info img {
+  height: 120px;
+}
+
+.greeting h4 {
+  font-size: 0.75em;
+}
+
+.header-buttons {
+  grid-area: header-buttons;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-buttons button {
+  width: 6em;
+  padding: 1em 0;
+  border-radius: 50px;
+  border-style: none;
+  background-color: var(--color-primary);
+  color: var(--color-font-light);
+  font-size: 1.3em;
+  font-weight: var(--fw-bold);
+}
+
+/* Header Pseudo Elements */
+.search img:hover,
+.user-nav img:hover,
+.user-nav p:hover,
+.header-buttons button:hover {
+  transform: scale(1.1);
+}
+
+.search input:focus {
+  outline: 2px solid var(--color-primary);
+}
+
+/* Main Content */
+
+.main-content {
+  grid-area: main-content;
+  background-color: var(--color-bg);
+  z-index: -1;
 }
 
 /* Misc */
