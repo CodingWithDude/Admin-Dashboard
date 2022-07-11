@@ -5,6 +5,7 @@
   --color-bg: #e2e8f0;
   --color-font-dark: #000000;
   --color-font-light: #ffffff;
+  --color-font-grey: #7c7c7c;
 
   /* Fonts */
   --ff-primary: "Roboto", sans-serif;
@@ -39,12 +40,11 @@ body {
 /* Main Container */
 .main-container {
   display: grid;
-
   grid-template-areas:
     "sidebar header"
     "sidebar main-content";
-  grid-template-columns: 20em auto;
-  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 20em 4fr;
+  grid-template-rows: 11em 4fr;
   font-family: var(--ff-primary);
 }
 
@@ -56,7 +56,6 @@ body {
   background-color: var(--color-primary);
   color: var(--color-font-light);
   font-weight: var(--fw-bold);
-  z-index: 1;
 }
 
 .logo {
@@ -100,6 +99,7 @@ body {
 .secondary-links li:hover {
   text-decoration: underline;
 }
+
 .logo img:hover,
 .main-links img:hover,
 .secondary-links img:hover {
@@ -118,7 +118,7 @@ body {
   grid-template-columns: 2fr 1fr;
   padding-left: 36px;
   padding-top: 16px;
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.43);
+  padding-right: 16px;
 }
 
 .search {
@@ -181,8 +181,8 @@ body {
 }
 
 .header-buttons button {
-  width: 6em;
-  padding: 1em 0;
+  width: 5em;
+  padding: 0.75em 0;
   border-radius: 50px;
   border-style: none;
   background-color: var(--color-primary);
@@ -192,11 +192,13 @@ body {
 }
 
 /* Header Pseudo Elements */
+
 .search img:hover,
 .user-nav img:hover,
 .user-nav p:hover,
 .header-buttons button:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .search input:focus {
@@ -207,11 +209,171 @@ body {
 
 .main-content {
   grid-area: main-content;
+  display: grid;
+  grid-template-areas: "projects announcements";
+  grid-template-columns: 3fr 1fr;
+  padding: 1em 1em;
   background-color: var(--color-bg);
-  z-index: -1;
+  gap: 1em;
+}
+
+/* Projects */
+
+.projects {
+  display: grid;
+  grid-template-areas:
+    "project-title project-title"
+    "card card"
+    "card card"
+    "card card";
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  grid-template-rows: 25px repeat(3, 253px);
+  gap: 1em;
+}
+
+.project-title {
+  font-size: 1.5em;
+  font-weight: var(--fw-medium);
+  grid-area: project-title;
+}
+
+.card {
+  display: grid;
+  background-color: var(--color-font-light);
+  border-radius: 0.5em;
+  padding: 1.5em;
+  gap: 0.5em;
+  border: 2px solid transparent;
+  border-left: 0.5em solid var(--color-accent);
+}
+
+.card h2 {
+  font-size: 1.2em;
+  font-weight: var(--fw-medium);
+}
+
+.card-buttons {
+  justify-self: right;
+}
+
+.card-buttons button {
+  background-color: transparent;
+  border: none;
+}
+
+/* Project Pseudo Elements */
+
+.card-buttons button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.card:hover {
+  border-top: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  cursor: pointer;
+}
+
+/* Announcements */
+
+.announcements {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  grid-area: announcements;
+}
+
+.announcements-title {
+  font-size: 1.5em;
+  font-weight: var(--fw-medium);
+  padding-bottom: 1px;
+}
+
+.announcement-title {
+  font-size: 1.2em;
+  margin-bottom: 0.3em;
+  font-weight: var(--fw-medium);
+}
+
+.announcement {
+  border-radius: 0.5em;
+  padding: 1.5em;
+  background-color: var(--color-font-light);
+  height: 125px;
+  border: 2px solid transparent;
+}
+
+.text-ellipsis--3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* Addition lines for 2 line or multiline ellipsis */
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+/* Trending Pseudo Elements */
+
+.announcement:hover {
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+}
+
+/* Trending */
+
+.trending {
+  grid-area: trending;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.trending-title {
+  font-size: 1.5em;
+  font-weight: var(--fw-medium);
+}
+
+.trending-project {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  background-color: var(--color-font-light);
+  border-radius: 0.5em;
+  padding: 0.5em;
+  border: 2px solid transparent;
+}
+
+.trending-profile h4 {
+  font-weight: var(--fw-medium);
+  padding-bottom: 0.5em;
+}
+
+.trending-profile p {
+  color: var(--color-font-grey);
+}
+
+.trending-project img {
+  height: 50px;
+  width: 50px;
+}
+
+/* Trending Pseudo Elements */
+
+.trending-project:hover {
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
 }
 
 /* Misc */
+
+article img {
+  height: 25px;
+}
+
 img,
 svg {
   width: 100%;
